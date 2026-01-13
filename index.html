@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariana Borba - Designer Gráfica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        :root {
+            --navy: #2E4A7C;
+            --pink: #FF6B9D;
+            --beige: #F5F1E8;
+            --dark-blue: #1A2F4F;
+        }
+
+        body {
+            background-color: var(--beige);
+            overflow-x: hidden;
+        }
+
+        .text-navy {
+            color: var(--navy);
+        }
+
+        .bg-navy {
+            background-color: var(--navy);
+        }
+
+        .text-pink {
+            color: var(--pink);
+        }
+
+        .bg-pink {
+            background-color: var(--pink);
+        }
+
+        .bg-beige {
+            background-color: var(--beige);
+        }
+
+        .star-decoration {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .star-big {
+            width: 120px;
+            height: 120px;
+        }
+
+        .star-medium {
+            width: 80px;
+            height: 80px;
+        }
+
+        .star-small {
+            width: 40px;
+            height: 40px;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .profile-blob {
+            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--pink) 0%, #FF8FB3 100%);
+            position: relative;
+        }
+
+        .dotted-circle {
+            border: 3px dotted var(--navy);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            background: white;
+            border: 3px solid var(--navy);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-icon:hover {
+            transform: translateY(-10px) rotate(5deg);
+        }
+
+        .soft-skill {
+            padding: 12px 30px;
+            background: var(--pink);
+            color: white;
+            font-weight: 700;
+            border-radius: 50px;
+            font-size: 1.1rem;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            background: var(--navy);
+            padding: 20px 0;
+        }
+
+        .marquee-content {
+            display: flex;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-item {
+            flex-shrink: 0;
+            padding: 0 40px;
+            color: var(--beige);
+            font-weight: 700;
+            font-size: 1.5rem;
+            white-space: nowrap;
+        }
+
+        .project-card {
+            border-radius: 30px;
+            overflow: hidden;
+            border: 4px solid var(--navy);
+            transition: transform 0.3s ease;
+            background: white;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: var(--pink);
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            border: 4px solid var(--navy);
+            box-shadow: 6px 6px 0 var(--navy);
+            transition: all 0.3s ease;
+        }
+
+        .contact-button:hover {
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0 var(--navy);
+        }
+
+        .education-card {
+            background: var(--navy);
+            color: white;
+            border-radius: 30px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .star-big {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header com Badge -->
+    <header class="relative pt-12 pb-8 px-6">
+        <div class="max-w-7xl mx-auto relative">
+            <!-- Badge "2026 Edition" -->
+            <div class="absolute top-0 right-6 float-animation">
+                <div class="relative">
+                    <svg class="w-24 h-24" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="#FF6B9D"/>
+                        <path d="M50,10 L54,30 L65,15 L60,35 L80,25 L65,40 L85,45 L65,50 L85,55 L65,60 L80,75 L60,65 L65,85 L54,70 L50,90 L46,70 L35,85 L40,65 L20,75 L35,60 L15,55 L35,50 L15,45 L35,40 L20,25 L40,35 L35,15 L46,30 Z" fill="#FF6B9D"/>
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-white font-bold text-xs">2026</div>
+                            <div class="text-white font-bold text-xs">EDITION</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logo Principal -->
+            <div class="max-w-2xl">
+                <div class="relative inline-block">
+                    <h1 class="section-title text-navy leading-tight">
+                        Portfólio
+                    </h1>
+                    <div class="absolute -right-16 top-1/2 -translate-y-1/2">
+                        <svg class="w-12 h-12 text-pink pulse-animation" viewBox="0 0 50 50" fill="currentColor">
+                            <circle cx="25" cy="25" r="4"/>
+                            <circle cx="25" cy="25" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="25" cy="25" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6 mt-4">
+                    <div class="h-1 w-20 bg-navy"></div>
+                    <p class="text-navy font-semibold text-lg"> Mariana Borba | Desenvolvedora Front-End e Web Designer </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Marquee Sobre Mim -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span class="marquee-item">ABOUT ME</span>
+            <span class="marquee-item">•</span>
+            <span class="marquee-item">SOBRE MIM</span>
+            <span class="marquee-item">•</span>
+            <span class="marquee-item">ABOUT ME</span>
+            <span class="marquee-item">•</span>
+            <span class="marquee-item">SOBRE MIM</span>
+            <span class="marquee-item">•</span>
+            <span class="marquee-item">ABOUT ME</span>
+            <span class="marquee-item">•</span>
+            <span class="marquee-item">SOBRE MIM</span>
+            <span class="marquee-item">•</span>
+        </div>
+    </div>
+
+    <!-- Seção Apresentação -->
+    <section class="py-20 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                
+                <!-- Foto com Decorações -->
+                <div class="relative">
+                    <!-- Círculo Pontilhado -->
+                    <div class="dotted-circle w-80 h-80 top-8 -left-8"></div>
+                    
+                    <!-- Estrelas Decorativas -->
+                    <svg class="star-decoration star-medium -top-10 -right-10 text-navy float-animation" style="animation-delay: 0.5s" viewBox="0 0 100 100" fill="currentColor">
+                        <polygon points="50,10 61,40 92,40 67,60 78,90 50,70 22,90 33,60 8,40 39,40"/>
+                    </svg>
+                    
+                    <svg class="star-decoration star-small bottom-0 -left-6 text-pink pulse-animation" viewBox="0 0 100 100" fill="currentColor">
+                        <polygon points="50,15 58,42 85,42 63,58 71,85 50,69 29,85 37,58 15,42 42,42"/>
+                    </svg>
+
+                    <!-- Sparkles -->
+                    <svg class="sparkle top-1/4 right-10 text-pink" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10,0 L11,9 L20,10 L11,11 L10,20 L9,11 L0,10 L9,9 Z"/>
+                    </svg>
+
+                    <!-- Foto Principal -->
+                    <div class="profile-blob w-80 h-96 mx-auto relative z-10">
+                        <div class="w-full h-full flex items-center justify-center text-white text-6xl">
+                            <img src="./img/mari.png" alt="Foto de Mariana Borba" class="w-full h-full object-cover"/>
+                        </div>
+                    </div>
+
+                    <!-- Estrela Grande -->
+                    <svg class="star-decoration star-big -bottom-16 -right-16 text-pink opacity-90 float-animation" style="animation-delay: 1s" viewBox="0 0 100 100" fill="currentColor">
+                        <polygon points="50,5 58,38 92,38 64,58 72,92 50,72 28,92 36,58 8,38 42,38"/>
+                    </svg>
+                </div>
+
+                <!-- Texto Apresentação -->
+                <div>
+                    <h2 class="text-6xl font-black text-navy mb-6">
+                        Olá ★
+                        <span class="block text-4xl text-pink mt-2"> Seja bem vindo(a)! </span>
+                    </h2>
+                    
+                    <p class="text-lg text-navy leading-relaxed mb-6">
+                        Sou a Mariana Borba, desenvolvedora front-end júnior em constante aprendizado!
+                        <br><br>
+                        Meu diferencial é entregar mais do que desenvolvimento: ofereço um pacote completo que une identidade visual, design de interfaces, front-end e estratégias de marketing, ajudando empresas a se posicionarem de forma consistente e atrativa no digital.
+                        <br>
+
+                        <span class="block mt-4 pl-4 border-l-4 border-pink">
+                            Se você quer uma presença online que chame atenção, gere valor e converta, vamos tirar sua ideia do papel. Me mande uma mensagem!
+                        </span>
+                        </p>
+
+
+                    <!-- Contatos -->
+                    <div class="space-y-4 mb-8">
+                        <h3 class="text-2xl font-bold text-pink">Contatos</h3>
+                        
+                        <a
+                        href="mailto:mari.borba1@icloud.com"
+                        class="group inline-flex items-center gap-4 rounded-full bg-navy px-6 py-3 text-white shadow-lg transition-all duration-300 hover:bg-pink hover:scale-105"
+                        >
+                        <span class="text-3xl transition-transform duration-300 group-hover:-rotate-12">
+                            📧
+                        </span>
+
+                        <span class="font-semibold text-lg">
+                            Envie um e-mail
+                        </span>
+                        </a>
+
+                        <br>
+
+
+                        <a
+                        href="https://wa.me/5518935058006"
+                        target="_blank"
+                        class="group inline-flex items-center gap-4 rounded-full bg-pink-500 px-6 py-3 text-white shadow-lg transition-all duration-300 hover:bg-green-600 hover:scale-105"
+                        >
+                        <span class="text-3xl transition-transform duration-300 group-hover:rotate-12">
+                            💬
+                        </span>
+
+                        <span class="font-semibold text-lg">
+                            Fale comigo no WhatsApp
+                        </span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Educação e Skills -->
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12">
+                
+                <!-- Educação -->
+                <div class="relative">
+                    <div class="inline-block mb-8 relative">
+                        <div class="badge bg-pink text-white">Formação Academica</div>
+                        <svg class="absolute -right-12 -top-2 w-8 h-8 text-navy" viewBox="0 0 50 50" fill="currentColor">
+                            <polygon points="25,5 28,20 43,20 31,28 34,43 25,35 16,43 19,28 7,20 22,20"/>
+                        </svg>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Card Educação 1 -->
+                        <div class="education-card">
+                            <div class="absolute top-6 right-6">
+                                <svg class="w-16 h-16 text-pink opacity-50" viewBox="0 0 100 100" fill="currentColor">
+                                    <circle cx="50" cy="50" r="15"/>
+                                    <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="4"/>
+                                </svg>
+                            </div>
+                            
+                            <div class="border-2 border-white rounded-full inline-block px-6 py-2 mb-4">
+                                <span class="text-white font-bold">ENSINO MÉDIO</span>
+                            </div>
+                            
+                            <p class="text-white text-lg mb-2">2014 - 2025</p>
+                            <p class="text-white/90 font-semibold">Escola SESI 025</p>
+                            <p class="text-white/90">Andradina</p>
+                        </div>
+
+                        <!-- Card Educação 2 -->
+                        <div class="education-card">
+                            <div class="absolute bottom-6 right-6 flex gap-2">
+                                <svg class="w-12 h-12 text-white opacity-20 float-animation" viewBox="0 0 50 50" fill="currentColor">
+                                    <polygon points="25,5 28,20 43,20 31,28 34,43 25,35 16,43 19,28 7,20 22,20"/>
+                                </svg>
+                                <svg class="w-16 h-16 text-white opacity-20 float-animation" style="animation-delay: 0.5s" viewBox="0 0 50 50" fill="currentColor">
+                                    <polygon points="25,5 28,20 43,20 31,28 34,43 25,35 16,43 19,28 7,20 22,20"/>
+                                </svg>
+                            </div>
+                            
+                            <div class="border-2 border-white rounded-full inline-block px-6 py-2 mb-4">
+                                <span class="text-white font-bold">CURSO TÉCNICO</span>
+                            </div>
+                            
+                            <p class="text-white text-lg mb-2">2024 - 2025</p>
+                            <p class="text-white/90 font-semibold"> Técnico em Análise e Desenvolvimento de Sistemas - SENAI </p>
+                            <p class="text-white/90"> Andradina</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Software Skills -->
+                <div class="relative">
+                    <div class="inline-block mb-8 relative">
+                        <div class="badge bg-pink text-white rotate-[-2deg]">Software Skills</div>
+                        <svg class="absolute -left-12 top-0 w-10 h-10 text-pink opacity-50 pulse-animation" viewBox="0 0 50 50" fill="currentColor">
+                            <polygon points="25,5 28,20 43,20 31,28 34,43 25,35 16,43 19,28 7,20 22,20"/>
+                        </svg>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+
+                        <div class="text-center">
+                            <div class="skill-icon mx-auto mb-3">
+                                <span class="font-bold" style="font-family: 'Brush Script MT', cursive; color: #00C4CC;"><img src="https://static.vecteezy.com/system/resources/previews/048/759/334/non_2x/canva-transparent-icon-free-png.png" alt="Canva" class="w-20 h-20"/></span>
+                            </div>
+                            <p class="font-bold text-navy">Canva</p>
+                        </div>
+
+
+                        <div class="text-center">
+                            <div class="skill-icon mx-auto mb-3">
+                                <span class="font-bold text-sm"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1667px-Figma-logo.svg.png" alt="Figma" class="w-8 h-10"/></span>
+                            </div>
+                            <p class="font-bold text-navy">Figma</p>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="skill-icon mx-auto mb-3">
+                                <span class="font-bold text-cyan-400 text-sm">React</span>
+                            </div>
+                            <p class="font-bold text-navy">React</p>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="skill-icon mx-auto mb-3">
+                                <span class="font-bold text-cyan-600 text-xs"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" alt="React Native" class="w-9 h-8"/></span>
+                            </div>
+                            <p class="font-bold text-navy">React Native</p>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="skill-icon mx-auto mb-3">
+                                <span class="font-bold text-cyan-600 text-xs"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1280px-Tailwind_CSS_Logo.svg.png" alt="Tailwind" class="w-9 h-9"/></span>
+                            </div>
+                            <p class="font-bold text-navy">Tailwind</p>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="skill-icon mx-auto mb-3">
+                                <span class="font-bold text-cyan-600 text-xs"> <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" class="w-9 h-8"/></span>
+                            </div>
+                            <p class="font-bold text-navy">GitHub</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Estrela Decorativa -->
+                    <svg class="absolute -bottom-10 -right-10 w-32 h-32 text-pink opacity-30 float-animation" viewBox="0 0 100 100" fill="currentColor">
+                        <polygon points="50,5 58,38 92,38 64,58 72,92 50,72 28,92 36,58 8,38 42,38"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soft Skills -->
+    <section class="py-12 px-6 bg-beige">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-wrap justify-center items-center gap-6">
+                <span class="badge bg-pink text-white text-sm">SOFT SKILLS:</span>
+                <span class="soft-skill">Trabalho em Equipe</span>
+                <span class="text-navy text-3xl">—</span>
+                <span class="soft-skill">Adaptabilidade</span>
+                <span class="text-navy text-3xl">—</span>
+                <span class="soft-skill">Criatividade</span>
+                <span class="text-navy text-3xl">—</span>
+                <span class="soft-skill">Proatividade</span>
+                
+                <!-- Estrelas Decorativas -->
+                <svg class="w-12 h-12 text-navy pulse-animation" viewBox="0 0 50 50" fill="currentColor">
+                    <polygon points="25,5 28,20 43,20 31,28 34,43 25,35 16,43 19,28 7,20 22,20"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfólio -->
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-navy inline-block relative">
+                    Meus Projetos
+                    <svg class="absolute -right-20 -top-8 w-16 h-16 text-pink float-animation" viewBox="0 0 50 50" fill="currentColor">
+                        <polygon points="25,5 28,20 43,20 31,28 34,43 25,35 16,43 19,28 7,20 22,20"/>
+                    </svg>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projeto 1 -->
+                <div class="project-card" onclick="window.location.href='https://biostudy.vercel.app/'">
+                    <div class="h-64 bg-gradient-to-br from-green-400 to-green-800 flex items-center justify-center text-white text-6xl">
+                        🌱
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-navy mb-2">BioStudy</h3>
+                        <p class="text-gray-600">Site de revisão de conteúdo da matéria de Biologia no ano de 2024</p>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="project-card" onclick="window.location.href='https://aulas-lima-plum.vercel.app/'">
+                    <div class="h-64 bg-gradient-to-br from-blue-400 to-blue-800 flex items-center justify-center text-white text-6xl">
+                        💻
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-navy mb-2">Site de atividades</h3>
+                        <p class="text-gray-600">Telas desenvolvidas durante o curso do SENAI</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-20 px-6 bg-beige relative overflow-hidden">
+        <!-- Decorações -->
+        <svg class="absolute top-10 left-10 w-32 h-32 text-pink opacity-20 float-animation" viewBox="0 0 100 100" fill="currentColor">
+            <polygon points="50,5 58,38 92,38 64,58 72,92 50,72 28,92 36,58 8,38 42,38"/>
+        </svg>
+        <svg class="absolute bottom-10 right-10 w-40 h-40 text-navy opacity-10 float-animation" style="animation-delay: 1s" viewBox="0 0 100 100" fill="currentColor">
+            <polygon points="50,5 58,38 92,38 64,58 72,92 50,72 28,92 36,58 8,38 42,38"/>
+        </svg>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-5xl md:text-6xl font-black text-navy mb-8">
+                Vamos criar algo incrível juntos?
+            </h2>
+            <p class="text-xl text-navy mb-12">
+                Sempre estou aberta a desafios e novas ideias criativas. Contate-me!
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="mailto:mari.borba1@icloud.com" class="contact-button">
+                    <span>📧</span>
+                    <span>Enviar E-mail</span>
+                </a>
+                
+                <a href="https://wa.me/18935058006" class="contact-button bg-navy">
+                    <span>💬</span>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-pink">Mariana Borba</h3>
+                    <p class="text-white/80">Desenvolvedora Front-End e Web Designer</p>
+                    <p class="text-white/80">Criando uma comunicação visual única</p>
+                </div>
